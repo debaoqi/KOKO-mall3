@@ -13,14 +13,26 @@
     <link rel="manifest" href="manifest.json">
     <link rel="preload" as="image" href="导航页.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- DSEG7 LED七段数字字体 -->
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/fontsource/fonts/dseg7-classic@latest/latin-400-normal.woff2" type="font/woff2" crossorigin>
     <!-- Google Identity Services -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- Facebook SDK -->
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
     <style>
+        /* DSEG7 LED七段数字字体 */
+        @font-face {
+            font-family: 'DSEG7 Classic';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/dseg7-classic@latest/latin-400-normal.woff2') format('woff2'),
+                 url('https://cdn.jsdelivr.net/fontsource/fonts/dseg7-classic@latest/latin-400-normal.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        
         :root {
-            --primary: #FFC107;
-            --accent: #FFC107;
+            --primary: #FFD700;
+            --accent: #FFD700;
             --gold: #FFD700;
             --bg: #0A0C14;
             --text-main: #FFFFFF;
@@ -30,7 +42,7 @@
             --card-bg: #1A1D2E;
             /* Dark card background */
             --nav-bg: #0A0C14;
-            --green: #00E676;
+            --green: #BFFF00;
             --item-bg: #1A1D2E;
             --modal: #13151F;
             --border-subtle: rgba(255, 255, 255, 0.08);
@@ -223,7 +235,7 @@
         }
 
         .register-footer a {
-            color: #4285F4;
+            color: #BFFF00;
             text-decoration: none;
         }
 
@@ -390,7 +402,7 @@
         }
 
         .logo span {
-            color: var(--text-main);
+            color: #BFFF00;
             /* light text for dark mode */
             font-style: italic;
             margin-left: 0px;
@@ -449,7 +461,7 @@
         .hero {
             background: linear-gradient(135deg, #2A2F45 0%, #3A4158 100%);
             border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 5.6px;
+            border-radius: 2.8px;
             height: 160px;
             margin: 16px;
             display: flex;
@@ -804,7 +816,7 @@
             text-align: center;
             padding: 4px 0;
             /* reduced ~1/3 from 10px */
-            border-radius: 12px;
+            border-radius: 2.8px;
             font-weight: 700;
             font-size: 0.75rem;
             white-space: nowrap;
@@ -815,7 +827,7 @@
             .f-btn {
                 font-size: 0.7rem;
                 padding: 4px 0;
-                border-radius: 6px;
+                border-radius: 2.8px;
             }
             
             .foot-btns {
@@ -824,9 +836,9 @@
         }
 
         .fb-price {
-            background: transparent;
+            background: #BFFF00;
             color: #000;
-            border: 1px solid #000;
+            border: none;
         }
 
         .fb-koko {
@@ -843,7 +855,7 @@
             display: flex;
             flex-direction: column;
             gap: 4px;
-            border-radius: 5.6px !important;
+            border-radius: 2.8px !important;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
@@ -855,15 +867,15 @@
 
         /* Specific override for Home Price Button */
         .home-card .fb-price {
-            color: #fff;
-            border: 1px solid #fff;
-            background: transparent;
+            color: #000;
+            border: none;
+            background: #BFFF00;
         }
 
         .home-card .card-img {
             background: linear-gradient(135deg, #2A2F45 0%, #3A4158 100%) !important;
             /* Lighter gray placeholder for better contrast */
-            border-radius: 3.4px;
+            border-radius: 2.8px;
             width: 100%;
             aspect-ratio: 1.2;
             display: flex;
@@ -1392,9 +1404,42 @@
             border: 1px solid rgba(0, 0, 0, 0.12);
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+            padding-left: 16px;
+            padding-right: 90px;
             width: 100%;
             gap: 16px;
+        }
+        
+        #lucky-top-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+        
+        /* LED数字价格显示 */
+        .led-price {
+            display: flex;
+            gap: 1px;
+        }
+        
+        .led-digit {
+            font-family: 'DSEG7 Classic', monospace;
+            font-weight: 400;
+            font-size: 1.8rem;
+            line-height: 1;
+            display: inline-block;
+            width: 0.7em;
+            text-align: center;
+        }
+        
+        .led-gray {
+            color: #E0E0E0;
+        }
+        
+        .led-red {
+            color: #D50000;
         }
 
         .game-bar {
@@ -1537,6 +1582,11 @@
         .game-grid.g49 .cell {
             font-size: 1.1rem;
             border: none !important;
+            background: #BFFF00;
+        }
+        
+        .game-grid.g49 .cell.sel {
+            background: #555 !important;
         }
 
         .game-grid.g64 {
@@ -1552,6 +1602,11 @@
         .game-grid.g81 .cell {
             font-size: 1rem;
             border: none !important;
+            background: #BFFF00;
+        }
+        
+        .game-grid.g81 .cell.sel {
+            background: #555 !important;
         }
 
         .game-grid.g100 {
@@ -1676,9 +1731,9 @@
         }
 
         .btn-out {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            color: var(--text-main);
+            background: #BFFF00;
+            border: none;
+            color: #000;
         }
 
         .btn-grad {
@@ -1713,7 +1768,7 @@
         }
 
         .pts-head {
-            background: var(--primary);
+            background: #BFFF00;
             border-radius: 6px;
             padding: 8px 24px;
             text-align: center;
@@ -1721,7 +1776,7 @@
             position: sticky;
             top: 0;
             z-index: 1001;
-            margin: 2px 16px -5px;
+            margin: 4px 16px -5px;
             color: #000;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
@@ -1797,8 +1852,8 @@
         }
 
         .pt-info {
-            background: var(--primary);
-            padding: 6px 8px;
+            background: rgba(255, 215, 0, 0.7);
+            padding: 3px 8px;
         }
 
         .pt-val {
@@ -1927,8 +1982,9 @@
         .stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
+            gap: 6px;
             padding: 3px 16px 8px;
+            margin-top: -6px;
         }
 
         .profile-fixed-header {
@@ -1941,7 +1997,7 @@
         }
 
         .stat {
-            background: #f5f5f5;
+            background: #BFFF00;
             padding: 4px 6px;
             border-radius: 4px;
             text-align: center;
@@ -2031,7 +2087,7 @@
 
         .empty-msg {
             font-size: 0.85rem;
-            color: var(--accent);
+            color: #BFFF00;
             text-align: left;
             padding: 12px 16px;
         }
@@ -2565,23 +2621,12 @@
 
                 <div class="register-buttons">
                     <button class="btn-login btn-google" onclick="App.loginGoogle()">
-                        <svg viewBox="0 0 65.7 65.8" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <style type="text/css">
-                                .st0{fill:#FFFFFF;}.st1{clip-path:url(#SVGID_00000162327641088031732340000013702522215080858261_);fill:#FBBC05;}.st2{clip-path:url(#SVGID_00000121242693576373485410000017945085978932268431_);fill:#EA4335;}.st3{clip-path:url(#SVGID_00000107577809387351288990000002246473308169818529_);fill:#34A853;}.st4{clip-path:url(#SVGID_00000083810782242453555550000004909462699566597283_);fill:#4285F4;}
-                            </style>
-                            <circle class="st0" cx="32.8" cy="32.9" r="32.4"/>
-                            <defs><path id="SVGID_1_" d="M58.6,28.2H33.5v10.4h14.5c-1.3,6.6-7,10.4-14.5,10.4c-8.8,0-15.9-7.1-15.9-15.9s7.1-15.9,15.9-15.9 c3.8,0,7.2,1.3,9.9,3.6l7.8-7.8c-4.8-4.2-10.9-6.7-17.8-6.7c-14.9,0-27,12-27,27s12,27,27,27c13.5,0,25.7-9.8,25.7-27 C59.2,31.5,58.9,29.8,58.6,28.2z"/></defs>
-                            <clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible;"/></clipPath>
-                            <path style="clip-path:url(#SVGID_2_);fill:#FBBC05;" d="M4.1,49V17.2 l20.8,15.9L4.1,49z"/>
-                            <defs><path id="SVGID_3_" d="M58.6,28.2H33.5v10.4h14.5c-1.3,6.6-7,10.4-14.5,10.4 c-8.8,0-15.9-7.1-15.9-15.9s7.1-15.9,15.9-15.9c3.8,0,7.2,1.3,9.9,3.6l7.8-7.8c-4.8-4.2-10.9-6.7-17.8-6.7c-14.9,0-27,12-27,27 s12,27,27,27c13.5,0,25.7-9.8,25.7-27C59.2,31.5,58.9,29.8,58.6,28.2z"/></defs>
-                            <clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible;"/></clipPath>
-                            <path style="clip-path:url(#SVGID_4_);fill:#EA4335;" d="M4.1,17.2l20.8,15.9 l8.6-7.5l29.4-4.8V3.7H4.1V17.2z"/>
-                            <defs><path id="SVGID_5_" d="M58.6,28.2H33.5v10.4h14.5c-1.3,6.6-7,10.4-14.5,10.4 c-8.8,0-15.9-7.1-15.9-15.9s7.1-15.9,15.9-15.9c3.8,0,7.2,1.3,9.9,3.6l7.8-7.8c-4.8-4.2-10.9-6.7-17.8-6.7c-14.9,0-27,12-27,27 s12,27,27,27c13.5,0,25.7-9.8,25.7-27C59.2,31.5,58.9,29.8,58.6,28.2z"/></defs>
-                            <clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible;"/></clipPath>
-                            <path style="clip-path:url(#SVGID_6_);fill:#34A853;" d="M4.1,49l36.8-28.2 l9.7,1.2L62.9,3.7v58.8H4.1V49z"/>
-                            <defs><path id="SVGID_7_" d="M58.6,28.2H33.5v10.4h14.5c-1.3,6.6-7,10.4-14.5,10.4 c-8.8,0-15.9-7.1-15.9-15.9s7.1-15.9,15.9-15.9c3.8,0,7.2,1.3,9.9,3.6l7.8-7.8c-4.8-4.2-10.9-6.7-17.8-6.7c-14.9,0-27,12-27,27 s12,27,27,27c13.5,0,25.7-9.8,25.7-27C59.2,31.5,58.9,29.8,58.6,28.2z"/></defs>
-                            <clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible;"/></clipPath>
-                            <path style="clip-path:url(#SVGID_8_);fill:#4285F4;" d="M62.9,62.5l-38-29.4 L20,29.4l42.9-12.3V62.5z"/>
+                        <svg viewBox="0 0 48 48" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="24" fill="#FFFFFF"/>
+                            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" transform="translate(4,4) scale(0.83)"/>
+                            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" transform="translate(4,4) scale(0.83)"/>
+                            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" transform="translate(4,4) scale(0.83)"/>
+                            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" transform="translate(4,4) scale(0.83)"/>
                         </svg>
                         Continue with Google
                     </button>
@@ -2636,7 +2681,7 @@
                         preserveAspectRatio="xMinYMid meet" aria-hidden="true">
                         <style>
                             .st0 {
-                                fill: #FFFFFF;
+                                fill: #BFFF00;
                             }
                         </style>
                         <g>
@@ -2677,7 +2722,7 @@
                         preserveAspectRatio="xMinYMid meet" aria-hidden="true">
                         <style>
                             .st0 {
-                                fill: #FFFFFF;
+                                fill: #BFFF00;
                             }
                         </style>
                         <g>
@@ -2744,7 +2789,7 @@
                         preserveAspectRatio="xMinYMid meet" aria-hidden="true">
                         <style>
                             .st0 {
-                                fill: #FFFFFF;
+                                fill: #BFFF00;
                             }
                         </style>
                         <g>
@@ -2772,19 +2817,29 @@
                 </div>
             </header>
             <div class="lucky-area">
-                <div class="lucky-top-item" id="lucky-top">
-                    <!-- Dynamic Item -->
+                <div class="lucky-top-item" id="lucky-top" style="position:relative;">
+                    <!-- Dynamic Item Content -->
+                    <div id="lucky-top-content">
+                        <!-- 商品信息将动态插入这里 -->
+                    </div>
+                    <!-- LED价格显示 - 固定位置 -->
+                    <div style="position:absolute; top:6px; right:12px; text-align:right;">
+                        <div style="font-size:0.9rem; color:#000; margin-bottom:2px;">支付</div>
+                        <div class="led-price" id="led-price-display">
+                            <span class="led-digit led-gray">8</span><span class="led-digit led-gray">8</span><span class="led-digit led-gray">8</span><span class="led-digit led-gray">8</span><span class="led-digit led-gray">8</span>
+                        </div>
+                    </div>
+                    <input type="hidden" id="lbl-cost" value="0">
                 </div>
                 <div class="game-bar">
-                    <div><strong>选择幸运号码</strong> <span style="font-size:0.75rem; color:var(--text-gray)">( 需支付: <span
-                                id="lbl-cost" style="color:var(--text-main);font-weight:700">¥0</span>)</span></div>
+                    <div><strong style="color:#BFFF00">选择幸运号码</strong></div>
                     <div class="win-notice-container" onclick="App.openWinNoticeModal()" style="cursor: pointer;">
                         <div class="win-notice-scroll" id="win-notice-scroll">
                             <!-- 中奖信息将动态插入这里 -->
                         </div>
                     </div>
-                    <div><span style="color:var(--text-gray)">已选份额</span> <span
-                            style="color:var(--text-main); font-weight:800" id="lbl-cnt">0 /
+                    <div><span style="color:#FFD700">已选份额</span> <span
+                            style="color:#BFFF00; font-weight:800" id="lbl-cnt">0 /
                             64</span></div>
                 </div>
                 <div class="game-grid g64" id="grid"></div>
@@ -2816,29 +2871,29 @@
                 </div>
                 
                 <!-- 统一的游戏和兑换中心区域 -->
-                <div id="game-center-container" style="background:linear-gradient(135deg, #2A2F45 0%, #3A4158 100%); border:1px solid rgba(255, 255, 255, 0.25); border-radius:4px; margin:-5px 16px 0; padding:4px 0; position:sticky; z-index:1000;">
+                <div id="game-center-container" style="background:#000; border:1px solid rgba(255, 255, 255, 0.12); border-radius:4px; margin:-5px 16px 0; padding:4px 0; position:sticky; z-index:1000;">
                     <!-- 游戏中心标题 -->
                     <div style="text-align:center; padding:3px 16px;">
-                        <div style="font-size:0.95rem; font-weight:700; color:#FFC107;">KOKOmall游戏中心</div>
+                        <div style="font-size:0.95rem; font-weight:700; color:#BFFF00;">KOKOmall游戏中心</div>
                     </div>
                     
                     <!-- 游戏按钮区域（固定定位） -->
-                    <div id="game-buttons-sticky" style="padding:4px 12px; margin:0; box-sizing:border-box; display:block;">
-                        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:6px;">
+                    <div id="game-buttons-sticky" style="padding:4px 0px; margin:0; box-sizing:border-box; display:block;">
+                        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:4px;">
                             <!-- 打砖块按钮 -->
-                            <div style="padding:10px 12px; cursor:pointer; text-align:center; margin:0; background:#FFF9C4; border-radius:6px; box-shadow:0 2px 4px rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center; gap:6px; transform:translateX(-5px);" onclick="App.openBreakoutGame()">
+                            <div style="padding:10px 12px; cursor:pointer; text-align:center; margin:0; background:#BFFF00; border-radius:2.8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center; gap:6px;" onclick="App.openBreakoutGame()">
                                 <i class="fas fa-square" style="font-size:0.9rem; color:#000;"></i>
                                 <div style="font-size:0.85rem; font-weight:700; color:#000;">打砖块</div>
                             </div>
                             
                             <!-- 太空射击按钮 -->
-                            <div style="padding:10px 12px; cursor:pointer; text-align:center; margin:0; background:#FFF9C4; border-radius:6px; box-shadow:0 2px 4px rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center; gap:6px;" onclick="App.openSpaceShooterGame()">
+                            <div style="padding:10px 12px; cursor:pointer; text-align:center; margin:0; background:#BFFF00; border-radius:2.8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center; gap:6px;" onclick="App.openSpaceShooterGame()">
                                 <i class="fas fa-rocket" style="font-size:0.9rem; color:#000;"></i>
                                 <div style="font-size:0.85rem; font-weight:700; color:#000;">太空射击</div>
                             </div>
                             
                             <!-- 游戏开发中按钮 -->
-                            <div style="padding:10px 12px; text-align:center; margin:0; background:#9E9E9E; border-radius:6px; box-shadow:0 2px 4px rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center; gap:6px; cursor:not-allowed; opacity:0.7; transform:translateX(5px);">
+                            <div style="padding:10px 12px; text-align:center; margin:0; background:#9E9E9E; border-radius:2.8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center; gap:6px; cursor:not-allowed; opacity:0.7;">
                                 <i class="fas fa-lock" style="font-size:0.9rem; color:#FFF;"></i>
                                 <div style="font-size:0.85rem; font-weight:700; color:#FFF;">开发中...</div>
                             </div>
@@ -4734,13 +4789,13 @@
                 };
                 S.unit = Math.ceil(currentProductInfo.p / S.gridSize);
                 
-                // 更新KOKO界面显示
-                const c = document.getElementById('lucky-top');
-                const imgHtml = `<i class="fas ${currentProductInfo.i || 'fa-box'}" style="color:var(--accent); font-size:4rem;"></i>`;
+                // 更新KOKO界面显示 - 只更新内容区域，保留LED显示
+                const c = document.getElementById('lucky-top-content');
+                const imgHtml = `<i class="fas ${currentProductInfo.i || 'fa-box'}" style="color:var(--accent); font-size:3rem;"></i>`;
                 c.innerHTML = `${imgHtml}
                         <div style="display:flex; flex-direction:column; align-items:flex-start">
-                            <div style="font-weight:700; font-size:1.2rem; margin-bottom:4px; color:#000">${escapeHtml(currentProductInfo.n)}</div>
-                            <div style="color:var(--gold); font-size:1.1rem; font-weight:800">¥${escapeHtml(currentProductInfo.p)} <span style="font-size:0.75rem; color:#888; font-weight:400" id="lucky-unit-p"> (¥${escapeHtml(S.unit)}/份)</span></div>
+                            <div style="font-weight:700; font-size:1rem; margin-bottom:4px; color:#000">${escapeHtml(currentProductInfo.n)}</div>
+                            <div style="color:var(--gold); font-size:0.95rem; font-weight:800">¥${escapeHtml(currentProductInfo.p)} <span style="font-size:0.7rem; color:#888; font-weight:400" id="lucky-unit-p"> (¥${escapeHtml(S.unit)}/份)</span></div>
                         </div>`;
                 
                 // 清除所有选中的格子
@@ -4770,13 +4825,13 @@
             function toLucky(n, p, icon, img) {
                 S.activeItem = { n: n, p: p, i: icon, img: img };
                 S.unit = Math.ceil(p / S.gridSize); // Dynamic unit price
-                const c = document.getElementById('lucky-top');
+                const c = document.getElementById('lucky-top-content');
                 const safeIcon = escapeHtml(icon);
-                const imgHtml = `<i class="fas ${safeIcon}" style="color:var(--accent); font-size:4rem;"></i>`;
+                const imgHtml = `<i class="fas ${safeIcon}" style="color:var(--accent); font-size:3rem;"></i>`;
                 c.innerHTML = `${imgHtml}
                         <div style="display:flex; flex-direction:column; align-items:flex-start">
-                            <div style="font-weight:700; font-size:1.2rem; margin-bottom:4px; color:#000">${escapeHtml(n)}</div>
-                            <div style="color:var(--gold); font-size:1.1rem; font-weight:800">¥${escapeHtml(p)} <span style="font-size:0.75rem; color:#888; font-weight:400" id="lucky-unit-p"> (¥${escapeHtml(S.unit)}/份)</span></div>
+                            <div style="font-weight:700; font-size:1rem; margin-bottom:4px; color:#000">${escapeHtml(n)}</div>
+                            <div style="color:var(--gold); font-size:0.95rem; font-weight:800">¥${escapeHtml(p)} <span style="font-size:0.7rem; color:#888; font-weight:400" id="lucky-unit-p"> (¥${escapeHtml(S.unit)}/份)</span></div>
                         </div>`;
                 S.sel.clear();
                 document.querySelectorAll('.cell').forEach(e => e.classList.remove('sel'));
@@ -4828,6 +4883,43 @@
                     gameButtons.style.display = 'none';
                 }
             }
+            
+            // LED数字价格显示更新函数
+            function updateLedPrice(amount) {
+                const container = document.getElementById('led-price-display');
+                if (!container) return;
+                
+                // 格式化金额为5位数字字符串（补零）
+                const amountStr = String(amount).padStart(5, '0');
+                
+                // 生成LED数字HTML - 始终显示5位
+                let html = '';
+                let hasValue = amount > 0;
+                
+                if (!hasValue) {
+                    // 没有选择商品时，显示5个灰色的8
+                    for (let i = 0; i < 5; i++) {
+                        html += `<span class="led-digit led-gray">8</span>`;
+                    }
+                } else {
+                    // 有金额时，前面的0显示灰色8，实际数字显示红色
+                    let foundNonZero = false;
+                    for (let i = 0; i < 5; i++) {
+                        const digit = amountStr[i];
+                        if (digit !== '0') foundNonZero = true;
+                        
+                        if (foundNonZero) {
+                            // 从第一个非零数字开始，显示红色实际数字
+                            html += `<span class="led-digit led-red">${digit}</span>`;
+                        } else {
+                            // 前面的0显示灰色8
+                            html += `<span class="led-digit led-gray">8</span>`;
+                        }
+                    }
+                }
+                
+                container.innerHTML = html;
+            }
 
             function upd() {
                 document.querySelectorAll('.v-bal').forEach(e => e.textContent = '¥' + S.val); document.querySelectorAll('.v-pts').forEach(e => e.textContent = S.pts);
@@ -4842,7 +4934,9 @@
 
                 document.getElementById('n-fav').textContent = S.favs.length;
                 document.getElementById('lbl-cnt').textContent = S.sel.size + ' / ' + S.gridSize;
-                const c = S.sel.size * S.unit; document.getElementById('lbl-cost').textContent = '¥' + c;
+                const c = S.sel.size * S.unit;
+                document.getElementById('lbl-cost').value = c;
+                updateLedPrice(c);
                 const b = document.getElementById('btn-pay');
                 // disable KOKO支付 if no selections OR current grid size not allowed for this product
                 b.disabled = S.sel.size === 0 || !isGridAllowed(S.gridSize);
@@ -5409,16 +5503,20 @@
                 }
 
                 S.pts -= c;
-                const ns = [];
-                const is = [];
+                const tm = new Date().toLocaleString();
+                
+                // 为每个商品生成单独的记录
                 PD.forEach(p => {
                     if (S.ptsSel.has(p.id)) {
-                        ns.push(p.n);
-                        is.push(p.i);
+                        addRec('p', { 
+                            n: p.n, 
+                            c: p.p, 
+                            i: p.i, 
+                            tm: tm, 
+                            code: generateCode() 
+                        });
                     }
                 });
-                // Record for first item visually, but conceptually it's a batch
-                addRec('p', { n: ns, c: c, i: is[0], tm: new Date().toLocaleString(), code: generateCode() });
 
                 S.ptsSel.clear();
                 document.querySelectorAll('.pt-item').forEach(e => e.classList.remove('sel'));
@@ -5466,11 +5564,17 @@
                     S.favs = S.favs.filter((_, i) => !S.favSel.has(i));
                     S.favSel.clear(); renderFavs(); upd(); msg('已取消收藏');
                 } else if (act === 'exch') {
-                    let cost = 0; const ns = []; const is = [];
-                    S.favs.forEach((f, i) => { if (S.favSel.has(i)) { cost += f.p; ns.push(f.n); is.push(f.i); } });
+                    let cost = 0;
+                    S.favs.forEach((f, i) => { if (S.favSel.has(i)) { cost += f.p; } });
                     if (cost > S.pts) return msg(`积分不足 (需 ${cost})`);
                     S.pts -= cost;
-                    addRec('p', { n: ns, c: cost, i: is[0], tm: new Date().toLocaleString(), code: generateCode() });
+                    const tm = new Date().toLocaleString();
+                    // 为每个商品生成单独的记录
+                    S.favs.forEach((f, i) => { 
+                        if (S.favSel.has(i)) { 
+                            addRec('p', { n: f.n, c: f.p, i: f.i, tm: tm, code: generateCode() }); 
+                        } 
+                    });
                     S.favs = S.favs.filter((_, i) => !S.favSel.has(i));
                     S.favSel.clear(); renderFavs(); upd(); msg('兑换成功!');
                     document.getElementById('modal-favs').style.display = 'none';
@@ -6771,7 +6875,7 @@
                 canvas: null,
                 ctx: null,
                 paddle: {x: 0, y: 0, width: 100, height: 15},
-                ball: {x: 0, y: 0, radius: 8, vx: 0, vy: 0, speed: 5},
+                balls: [], // 支持多球
                 bricks: [],
                 level: 1,
                 score: 0,
@@ -6781,7 +6885,10 @@
                 keys: {},
                 started: false,
                 isDragging: false,
-                lastTouchX: 0
+                lastTouchX: 0,
+                powerUps: [], // 道具系统
+                combo: 0, // 连击计数
+                lastHitTime: 0
             };
 
             function openBreakoutGame() {
@@ -6813,10 +6920,16 @@
                 if (!breakoutGame.canvas || !breakoutGame.ctx) return;
                 breakoutGame.paddle.x = breakoutGame.canvas.width / 2 - breakoutGame.paddle.width / 2;
                 breakoutGame.paddle.y = breakoutGame.canvas.height - 40;
-                breakoutGame.ball.x = breakoutGame.canvas.width / 2;
-                breakoutGame.ball.y = breakoutGame.canvas.height - 60;
-                breakoutGame.ball.vx = 0;
-                breakoutGame.ball.vy = 0;
+                breakoutGame.paddle.width = 100; // 重置挡板宽度
+                // 初始化单个球
+                breakoutGame.balls = [{
+                    x: breakoutGame.canvas.width / 2,
+                    y: breakoutGame.canvas.height - 60,
+                    radius: 8,
+                    vx: 0,
+                    vy: 0,
+                    speed: 5 + breakoutGame.level * 0.3
+                }];
                 // 只在第一次启动时重置关卡和分数
                 if (typeof breakoutGame.level === 'undefined' || breakoutGame.level === 0) {
                     breakoutGame.level = 1;
@@ -6826,6 +6939,8 @@
                 breakoutGame.started = false;
                 breakoutGame.isDragging = false;
                 breakoutGame.lastTouchX = 0;
+                breakoutGame.powerUps = [];
+                breakoutGame.combo = 0;
                 breakoutInitBricks();
                 updateBreakoutUI();
                 if (breakoutGame.gameLoop) cancelAnimationFrame(breakoutGame.gameLoop);
@@ -6906,14 +7021,86 @@
             function breakoutStart() {
                 if (breakoutGame.started) return;
                 breakoutGame.started = true;
+                const ball = breakoutGame.balls[0];
                 const angle = (Math.random() - 0.5) * Math.PI / 3;
-                breakoutGame.ball.vx = Math.sin(angle) * breakoutGame.ball.speed;
-                breakoutGame.ball.vy = -Math.cos(angle) * breakoutGame.ball.speed;
+                ball.vx = Math.sin(angle) * ball.speed;
+                ball.vy = -Math.cos(angle) * ball.speed;
+            }
+            
+            // 生成道具
+            function spawnPowerUp(x, y, type) {
+                breakoutGame.powerUps.push({
+                    x: x,
+                    y: y,
+                    width: 30,
+                    height: 15,
+                    type: type,
+                    speed: 2
+                });
+            }
+            
+            // 应用道具效果
+            function applyPowerUp(type) {
+                switch(type) {
+                    case 'split': // 球分裂
+                        const newBalls = [];
+                        breakoutGame.balls.forEach(ball => {
+                            if (breakoutGame.balls.length + newBalls.length < 8) {
+                                newBalls.push({
+                                    x: ball.x,
+                                    y: ball.y,
+                                    radius: ball.radius,
+                                    vx: ball.vx * Math.cos(0.3) - ball.vy * Math.sin(0.3),
+                                    vy: ball.vx * Math.sin(0.3) + ball.vy * Math.cos(0.3),
+                                    speed: ball.speed
+                                });
+                                newBalls.push({
+                                    x: ball.x,
+                                    y: ball.y,
+                                    radius: ball.radius,
+                                    vx: ball.vx * Math.cos(-0.3) - ball.vy * Math.sin(-0.3),
+                                    vy: ball.vx * Math.sin(-0.3) + ball.vy * Math.cos(-0.3),
+                                    speed: ball.speed
+                                });
+                            }
+                        });
+                        breakoutGame.balls = breakoutGame.balls.concat(newBalls);
+                        break;
+                    case 'expand': // 挡板变长
+                        breakoutGame.paddle.width = Math.min(breakoutGame.paddle.width + 30, 180);
+                        break;
+                    case 'shrink': // 挡板变短
+                        breakoutGame.paddle.width = Math.max(breakoutGame.paddle.width - 20, 50);
+                        break;
+                    case 'fast': // 球加速
+                        breakoutGame.balls.forEach(ball => {
+                            ball.speed = Math.min(ball.speed * 1.3, 12);
+                            const currentSpeed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+                            if (currentSpeed > 0) {
+                                ball.vx = ball.vx / currentSpeed * ball.speed;
+                                ball.vy = ball.vy / currentSpeed * ball.speed;
+                            }
+                        });
+                        break;
+                    case 'slow': // 球减速
+                        breakoutGame.balls.forEach(ball => {
+                            ball.speed = Math.max(ball.speed * 0.7, 3);
+                            const currentSpeed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+                            if (currentSpeed > 0) {
+                                ball.vx = ball.vx / currentSpeed * ball.speed;
+                                ball.vy = ball.vy / currentSpeed * ball.speed;
+                            }
+                        });
+                        break;
+                    case 'extra': // 额外生命
+                        breakoutGame.lives++;
+                        break;
+                }
             }
 
             function breakoutInitBricks() {
                 breakoutGame.bricks = [];
-                const rows = 5 + breakoutGame.level;
+                const rows = Math.min(5 + Math.floor(breakoutGame.level / 2), 10);
                 const cols = 8;
                 const brickWidth = (breakoutGame.canvas.width - 40) / cols - 5;
                 const brickHeight = 25;
@@ -6921,13 +7108,42 @@
                 
                 for (let row = 0; row < rows; row++) {
                     for (let col = 0; col < cols; col++) {
+                        // 根据关卡决定砖块硬度
+                        let hp = 1;
+                        let color = `hsl(${(row * 30) % 360}, 70%, 50%)`;
+                        let powerUp = null;
+                        
+                        // 高关卡增加硬砖块
+                        if (breakoutGame.level >= 3) {
+                            const hardChance = Math.min(0.1 + breakoutGame.level * 0.05, 0.5);
+                            if (Math.random() < hardChance) {
+                                hp = Math.min(2 + Math.floor(breakoutGame.level / 3), 5);
+                                color = `hsl(0, 0%, ${80 - hp * 15}%)`; // 灰色表示硬度
+                            }
+                        }
+                        
+                        // 随机添加道具砖块
+                        if (Math.random() < 0.08) {
+                            const powerTypes = ['split', 'expand', 'shrink', 'fast', 'slow', 'extra'];
+                            powerUp = powerTypes[Math.floor(Math.random() * powerTypes.length)];
+                            color = powerUp === 'split' ? '#FF00FF' : 
+                                    powerUp === 'expand' ? '#00FFFF' : 
+                                    powerUp === 'shrink' ? '#FF0000' :
+                                    powerUp === 'fast' ? '#FFFF00' :
+                                    powerUp === 'slow' ? '#00FF00' : '#FFD700';
+                        }
+                        
                         breakoutGame.bricks.push({
                             x: 20 + col * (brickWidth + 5),
                             y: startY + row * (brickHeight + 5),
                             width: brickWidth,
                             height: brickHeight,
-                            color: `hsl(${(row * 30) % 360}, 70%, 50%)`,
-                            hit: false
+                            color: color,
+                            originalColor: color,
+                            hp: hp,
+                            maxHp: hp,
+                            hit: false,
+                            powerUp: powerUp
                         });
                     }
                 }
@@ -6939,79 +7155,140 @@
                 if (!breakoutGame.canvas || !breakoutGame.ctx) return;
                 
                 if (breakoutGame.started) {
-                    // 更新球的位置
-                    breakoutGame.ball.x += breakoutGame.ball.vx;
-                    breakoutGame.ball.y += breakoutGame.ball.vy;
+                    // 更新所有球的位置
+                    const ballsToRemove = [];
                     
-                    // 球与墙壁碰撞
-                    if (breakoutGame.ball.x - breakoutGame.ball.radius <= 0 || breakoutGame.ball.x + breakoutGame.ball.radius >= breakoutGame.canvas.width) {
-                        breakoutGame.ball.vx = -breakoutGame.ball.vx;
-                    }
-                    if (breakoutGame.ball.y - breakoutGame.ball.radius <= 0) {
-                        breakoutGame.ball.vy = -breakoutGame.ball.vy;
-                    }
-                    
-                    // 球与挡板碰撞
-                    if (breakoutGame.ball.y + breakoutGame.ball.radius >= breakoutGame.paddle.y &&
-                        breakoutGame.ball.y - breakoutGame.ball.radius <= breakoutGame.paddle.y + breakoutGame.paddle.height &&
-                        breakoutGame.ball.x >= breakoutGame.paddle.x &&
-                        breakoutGame.ball.x <= breakoutGame.paddle.x + breakoutGame.paddle.width) {
-                        const hitPos = (breakoutGame.ball.x - breakoutGame.paddle.x) / breakoutGame.paddle.width;
-                        const angle = (hitPos - 0.5) * Math.PI / 3;
-                        breakoutGame.ball.vx = Math.sin(angle) * breakoutGame.ball.speed;
-                        breakoutGame.ball.vy = -Math.abs(Math.cos(angle) * breakoutGame.ball.speed);
-                        breakoutGame.ball.y = breakoutGame.paddle.y - breakoutGame.ball.radius;
-                    }
-                    
-                    // 球与砖块碰撞
-                    for (let brick of breakoutGame.bricks) {
-                        if (!brick.hit &&
-                            breakoutGame.ball.x + breakoutGame.ball.radius >= brick.x &&
-                            breakoutGame.ball.x - breakoutGame.ball.radius <= brick.x + brick.width &&
-                            breakoutGame.ball.y + breakoutGame.ball.radius >= brick.y &&
-                            breakoutGame.ball.y - breakoutGame.ball.radius <= brick.y + brick.height) {
-                            brick.hit = true;
-                            breakoutGame.remainingBricks--;
-                            breakoutGame.score += 10;
-                            
-                            // 确定反弹方向
-                            const ballCenterX = breakoutGame.ball.x;
-                            const ballCenterY = breakoutGame.ball.y;
-                            const brickCenterX = brick.x + brick.width / 2;
-                            const brickCenterY = brick.y + brick.height / 2;
-                            
-                            const dx = ballCenterX - brickCenterX;
-                            const dy = ballCenterY - brickCenterY;
-                            
-                            if (Math.abs(dx) > Math.abs(dy)) {
-                                breakoutGame.ball.vx = -breakoutGame.ball.vx;
-                            } else {
-                                breakoutGame.ball.vy = -breakoutGame.ball.vy;
-                            }
-                            
-                            if (breakoutGame.remainingBricks === 0) {
-                                breakoutLevelComplete();
-                                return;
+                    breakoutGame.balls.forEach((ball, ballIndex) => {
+                        ball.x += ball.vx;
+                        ball.y += ball.vy;
+                        
+                        // 球与墙壁碰撞
+                        if (ball.x - ball.radius <= 0 || ball.x + ball.radius >= breakoutGame.canvas.width) {
+                            ball.vx = -ball.vx;
+                            ball.x = Math.max(ball.radius, Math.min(breakoutGame.canvas.width - ball.radius, ball.x));
+                        }
+                        if (ball.y - ball.radius <= 0) {
+                            ball.vy = -ball.vy;
+                            ball.y = ball.radius;
+                        }
+                        
+                        // 球与挡板碰撞
+                        if (ball.y + ball.radius >= breakoutGame.paddle.y &&
+                            ball.y - ball.radius <= breakoutGame.paddle.y + breakoutGame.paddle.height &&
+                            ball.x >= breakoutGame.paddle.x &&
+                            ball.x <= breakoutGame.paddle.x + breakoutGame.paddle.width) {
+                            const hitPos = (ball.x - breakoutGame.paddle.x) / breakoutGame.paddle.width;
+                            const angle = (hitPos - 0.5) * Math.PI / 3;
+                            ball.vx = Math.sin(angle) * ball.speed;
+                            ball.vy = -Math.abs(Math.cos(angle) * ball.speed);
+                            ball.y = breakoutGame.paddle.y - ball.radius;
+                        }
+                        
+                        // 球与砖块碰撞
+                        for (let brick of breakoutGame.bricks) {
+                            if (!brick.hit &&
+                                ball.x + ball.radius >= brick.x &&
+                                ball.x - ball.radius <= brick.x + brick.width &&
+                                ball.y + ball.radius >= brick.y &&
+                                ball.y - ball.radius <= brick.y + brick.height) {
+                                
+                                brick.hp--;
+                                
+                                // 连击系统
+                                const now = Date.now();
+                                if (now - breakoutGame.lastHitTime < 500) {
+                                    breakoutGame.combo++;
+                                } else {
+                                    breakoutGame.combo = 1;
+                                }
+                                breakoutGame.lastHitTime = now;
+                                
+                                // 更新砖块颜色显示剩余血量
+                                if (brick.hp > 0) {
+                                    const brightness = 30 + (brick.hp / brick.maxHp) * 50;
+                                    brick.color = `hsl(0, 0%, ${brightness}%)`;
+                                } else {
+                                    brick.hit = true;
+                                    breakoutGame.remainingBricks--;
+                                    
+                                    // 掉落道具
+                                    if (brick.powerUp) {
+                                        spawnPowerUp(brick.x + brick.width/2, brick.y + brick.height, brick.powerUp);
+                                    }
+                                }
+                                
+                                // 分数计算（包含连击加成）
+                                breakoutGame.score += 10 * brick.maxHp * (1 + breakoutGame.combo * 0.1);
+                                
+                                // 确定反弹方向
+                                const dx = ball.x - (brick.x + brick.width / 2);
+                                const dy = ball.y - (brick.y + brick.height / 2);
+                                
+                                if (Math.abs(dx / brick.width) > Math.abs(dy / brick.height)) {
+                                    ball.vx = -ball.vx;
+                                } else {
+                                    ball.vy = -ball.vy;
+                                }
+                                
+                                if (breakoutGame.remainingBricks === 0) {
+                                    breakoutLevelComplete();
+                                    return;
+                                }
+                                break;
                             }
                         }
+                        
+                        // 球掉落
+                        if (ball.y > breakoutGame.canvas.height) {
+                            ballsToRemove.push(ballIndex);
+                        }
+                    });
+                    
+                    // 移除掉落的球
+                    for (let i = ballsToRemove.length - 1; i >= 0; i--) {
+                        breakoutGame.balls.splice(ballsToRemove[i], 1);
                     }
                     
-                    // 球掉落
-                    if (breakoutGame.ball.y > breakoutGame.canvas.height) {
+                    // 如果没有球了
+                    if (breakoutGame.balls.length === 0) {
                         breakoutGame.lives--;
+                        breakoutGame.combo = 0;
                         if (breakoutGame.lives <= 0) {
                             breakoutGameOver();
                             return;
                         }
-                        breakoutGame.ball.x = breakoutGame.canvas.width / 2;
-                        breakoutGame.ball.y = breakoutGame.canvas.height - 60;
-                        breakoutGame.ball.vx = 0;
-                        breakoutGame.ball.vy = 0;
+                        // 重新生成一个球
+                        breakoutGame.balls = [{
+                            x: breakoutGame.canvas.width / 2,
+                            y: breakoutGame.canvas.height - 60,
+                            radius: 8,
+                            vx: 0,
+                            vy: 0,
+                            speed: 5 + breakoutGame.level * 0.3
+                        }];
                         breakoutGame.started = false;
                     }
+                    
+                    // 更新道具
+                    breakoutGame.powerUps = breakoutGame.powerUps.filter(powerUp => {
+                        powerUp.y += powerUp.speed;
+                        
+                        // 检查与挡板碰撞
+                        if (powerUp.y + powerUp.height >= breakoutGame.paddle.y &&
+                            powerUp.x + powerUp.width >= breakoutGame.paddle.x &&
+                            powerUp.x <= breakoutGame.paddle.x + breakoutGame.paddle.width) {
+                            applyPowerUp(powerUp.type);
+                            return false;
+                        }
+                        
+                        return powerUp.y < breakoutGame.canvas.height;
+                    });
+                    
                 } else {
                     // 球跟随挡板
-                    breakoutGame.ball.x = breakoutGame.paddle.x + breakoutGame.paddle.width / 2;
+                    if (breakoutGame.balls.length > 0) {
+                        breakoutGame.balls[0].x = breakoutGame.paddle.x + breakoutGame.paddle.width / 2;
+                    }
                 }
                 
                 drawBreakout();
@@ -7032,20 +7309,70 @@
                     if (!brick.hit) {
                         ctx.fillStyle = brick.color;
                         ctx.fillRect(brick.x, brick.y, brick.width, brick.height);
-                        ctx.strokeStyle = '#FFFFFF';
-                        ctx.strokeRect(brick.x, brick.y, brick.width, brick.height);
+                        
+                        // 显示血量（如果大于1）
+                        if (brick.hp > 1) {
+                            ctx.fillStyle = '#FFFFFF';
+                            ctx.font = 'bold 12px Arial';
+                            ctx.textAlign = 'center';
+                            ctx.fillText(brick.hp, brick.x + brick.width/2, brick.y + brick.height/2 + 4);
+                        }
+                        
+                        // 道具砖块特效
+                        if (brick.powerUp) {
+                            ctx.strokeStyle = '#FFFFFF';
+                            ctx.lineWidth = 2;
+                            ctx.strokeRect(brick.x + 2, brick.y + 2, brick.width - 4, brick.height - 4);
+                        }
                     }
+                });
+                
+                // 绘制道具
+                breakoutGame.powerUps.forEach(powerUp => {
+                    ctx.fillStyle = powerUp.type === 'split' ? '#FF00FF' : 
+                                    powerUp.type === 'expand' ? '#00FFFF' : 
+                                    powerUp.type === 'shrink' ? '#FF0000' :
+                                    powerUp.type === 'fast' ? '#FFFF00' :
+                                    powerUp.type === 'slow' ? '#00FF00' : '#FFD700';
+                    ctx.fillRect(powerUp.x - powerUp.width/2, powerUp.y, powerUp.width, powerUp.height);
+                    ctx.fillStyle = '#000';
+                    ctx.font = 'bold 10px Arial';
+                    ctx.textAlign = 'center';
+                    const label = powerUp.type === 'split' ? '分' : 
+                                  powerUp.type === 'expand' ? '大' : 
+                                  powerUp.type === 'shrink' ? '小' :
+                                  powerUp.type === 'fast' ? '快' :
+                                  powerUp.type === 'slow' ? '慢' : '+1';
+                    ctx.fillText(label, powerUp.x, powerUp.y + 11);
                 });
                 
                 // 绘制挡板
                 ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary') || '#FFC107';
                 ctx.fillRect(breakoutGame.paddle.x, breakoutGame.paddle.y, breakoutGame.paddle.width, breakoutGame.paddle.height);
                 
-                // 绘制球
-                ctx.fillStyle = '#FFFFFF';
-                ctx.beginPath();
-                ctx.arc(breakoutGame.ball.x, breakoutGame.ball.y, breakoutGame.ball.radius, 0, Math.PI * 2);
-                ctx.fill();
+                // 绘制所有球
+                breakoutGame.balls.forEach((ball, index) => {
+                    ctx.fillStyle = index === 0 ? '#FFFFFF' : `hsl(${index * 60}, 100%, 70%)`;
+                    ctx.beginPath();
+                    ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                
+                // 显示连击
+                if (breakoutGame.combo > 1) {
+                    ctx.fillStyle = '#FFD700';
+                    ctx.font = 'bold 20px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(`${breakoutGame.combo}连击!`, breakoutGame.canvas.width / 2, 30);
+                }
+                
+                // 显示球数量
+                if (breakoutGame.balls.length > 1) {
+                    ctx.fillStyle = '#00FF00';
+                    ctx.font = 'bold 14px Arial';
+                    ctx.textAlign = 'left';
+                    ctx.fillText(`球x${breakoutGame.balls.length}`, 10, breakoutGame.canvas.height - 10);
+                }
             }
 
             function updateBreakoutUI() {
@@ -7063,24 +7390,32 @@
                 cancelAnimationFrame(breakoutGame.gameLoop);
                 
                 let reward = 10;
+                // 扩展到25关
                 if (breakoutGame.level <= 3) {
                     reward = 10 + (breakoutGame.level - 1) * 10;
                 } else if (breakoutGame.level <= 6) {
-                    reward = 50 + (breakoutGame.level - 4) * 10;
-                } else if (breakoutGame.level <= 9) {
-                    reward = 100 + (breakoutGame.level - 7) * 20;
-                } else if (breakoutGame.level <= 12) {
-                    reward = 200 + (breakoutGame.level - 10) * 30;
+                    reward = 50 + (breakoutGame.level - 4) * 15;
+                } else if (breakoutGame.level <= 10) {
+                    reward = 100 + (breakoutGame.level - 7) * 25;
+                } else if (breakoutGame.level <= 15) {
+                    reward = 200 + (breakoutGame.level - 11) * 40;
+                } else if (breakoutGame.level <= 20) {
+                    reward = 400 + (breakoutGame.level - 16) * 50;
                 } else {
-                    reward = 290 + (breakoutGame.level - 13) * 20;
+                    reward = 650 + (breakoutGame.level - 21) * 70;
                 }
                 
-                // 通过第15关获得500积分
-                if (breakoutGame.level === 15) {
-                    reward = 500;
+                // 连击加成
+                if (breakoutGame.combo > 5) {
+                    reward += Math.floor(breakoutGame.combo * 5);
+                }
+                
+                // 通过第25关获得1000积分
+                if (breakoutGame.level === 25) {
+                    reward = 1000;
                     S.pts += reward;
                     upd();
-                    msg(`恭喜通关！完成所有15关！获得${reward}积分！`);
+                    msg(`恭喜通关！完成所有25关！获得${reward}积分！`);
                     // 重置关卡以便重新开始
                     breakoutGame.level = 0;
                     breakoutGame.score = 0;
@@ -7096,7 +7431,6 @@
                 
                 // 递增关卡
                 breakoutGame.level++;
-                breakoutGame.ball.speed = 5 + breakoutGame.level * 0.5;
                 
                 setTimeout(() => {
                     breakoutRestart();
@@ -7113,10 +7447,12 @@
             let spaceShooterGame = {
                 canvas: null,
                 ctx: null,
-                player: {x: 0, y: 0, width: 50, height: 40},
+                player: {x: 0, y: 0, width: 50, height: 40, fireRate: 150, bulletDamage: 1, bulletCount: 1},
                 bullets: [],
                 enemies: [],
+                enemyBullets: [], // 敌人子弹
                 particles: [],
+                powerUps: [], // 道具
                 level: 1,
                 score: 0,
                 lives: 3,
@@ -7127,7 +7463,11 @@
                 enemySpawnTimer: 0,
                 mouseX: 0,
                 mouseY: 0,
-                isShooting: false
+                isShooting: false,
+                boss: null, // Boss
+                bossSpawned: false,
+                shieldActive: false,
+                shieldTimer: 0
             };
 
             function openSpaceShooterGame() {
@@ -7163,16 +7503,25 @@
                 if (!spaceShooterGame.canvas || !spaceShooterGame.ctx) return;
                 spaceShooterGame.player.x = spaceShooterGame.canvas.width / 2 - spaceShooterGame.player.width / 2;
                 spaceShooterGame.player.y = spaceShooterGame.canvas.height - spaceShooterGame.player.height - 20;
+                spaceShooterGame.player.fireRate = 150;
+                spaceShooterGame.player.bulletDamage = 1;
+                spaceShooterGame.player.bulletCount = 1;
                 spaceShooterGame.bullets = [];
                 spaceShooterGame.enemies = [];
+                spaceShooterGame.enemyBullets = [];
                 spaceShooterGame.particles = [];
+                spaceShooterGame.powerUps = [];
+                spaceShooterGame.boss = null;
+                spaceShooterGame.bossSpawned = false;
+                spaceShooterGame.shieldActive = false;
+                spaceShooterGame.shieldTimer = 0;
                 // 只在第一次启动时重置关卡和分数
                 if (typeof spaceShooterGame.level === 'undefined' || spaceShooterGame.level === 0) {
                     spaceShooterGame.level = 1;
                     spaceShooterGame.score = 0;
                 }
                 spaceShooterGame.lives = 3;
-                spaceShooterGame.targetKills = 30 + (spaceShooterGame.level - 1) * 10;
+                spaceShooterGame.targetKills = 20 + (spaceShooterGame.level - 1) * 8;
                 spaceShooterGame.kills = 0;
                 spaceShooterGame.isShooting = false;
                 spaceShooterGame.lastShot = 0;
@@ -7231,27 +7580,35 @@
                 // 移动玩家到鼠标/触摸位置
                 const targetX = spaceShooterGame.mouseX - spaceShooterGame.player.width / 2;
                 const targetY = spaceShooterGame.mouseY - spaceShooterGame.player.height / 2;
-                spaceShooterGame.player.x += (targetX - spaceShooterGame.player.x) * 0.1;
-                spaceShooterGame.player.y += (targetY - spaceShooterGame.player.y) * 0.1;
+                spaceShooterGame.player.x += (targetX - spaceShooterGame.player.x) * 0.12;
+                spaceShooterGame.player.y += (targetY - spaceShooterGame.player.y) * 0.12;
                 spaceShooterGame.player.x = Math.max(0, Math.min(spaceShooterGame.canvas.width - spaceShooterGame.player.width, spaceShooterGame.player.x));
                 spaceShooterGame.player.y = Math.max(0, Math.min(spaceShooterGame.canvas.height - spaceShooterGame.player.height, spaceShooterGame.player.y));
+                
+                // 护盾计时
+                if (spaceShooterGame.shieldActive) {
+                    spaceShooterGame.shieldTimer--;
+                    if (spaceShooterGame.shieldTimer <= 0) {
+                        spaceShooterGame.shieldActive = false;
+                    }
+                }
                 
                 // 连续射击
                 if (spaceShooterGame.isShooting) {
                     spaceShooterShoot();
                 }
                 
-                // 生成敌人
+                // 生成敌人（多种类型）
                 spaceShooterGame.enemySpawnTimer++;
-                if (spaceShooterGame.enemySpawnTimer > 50 - spaceShooterGame.level * 3) {
+                const spawnRate = Math.max(60 - spaceShooterGame.level * 4, 20);
+                if (spaceShooterGame.enemySpawnTimer > spawnRate && !spaceShooterGame.boss) {
                     spaceShooterGame.enemySpawnTimer = 0;
-                    spaceShooterGame.enemies.push({
-                        x: Math.random() * (spaceShooterGame.canvas.width - 40),
-                        y: -40,
-                        width: 40,
-                        height: 40,
-                        speed: 2 + spaceShooterGame.level * 0.3
-                    });
+                    spawnEnemy();
+                }
+                
+                // Boss战（每5关出现）
+                if (spaceShooterGame.kills >= spaceShooterGame.targetKills && !spaceShooterGame.bossSpawned && spaceShooterGame.level % 5 === 0) {
+                    spawnBoss();
                 }
                 
                 // 更新子弹
@@ -7260,8 +7617,55 @@
                     return bullet.y > -bullet.height;
                 });
                 
+                // 更新敌人子弹
+                spaceShooterGame.enemyBullets = spaceShooterGame.enemyBullets.filter(bullet => {
+                    bullet.y += bullet.speed;
+                    
+                    // 检查与玩家碰撞
+                    if (!spaceShooterGame.shieldActive &&
+                        bullet.x < spaceShooterGame.player.x + spaceShooterGame.player.width &&
+                        bullet.x + bullet.width > spaceShooterGame.player.x &&
+                        bullet.y < spaceShooterGame.player.y + spaceShooterGame.player.height &&
+                        bullet.y + bullet.height > spaceShooterGame.player.y) {
+                        if (spaceShooterGame.lives > 0) {
+                            spaceShooterGame.lives--;
+                            createSpaceShooterParticles(spaceShooterGame.player.x + spaceShooterGame.player.width/2, spaceShooterGame.player.y + spaceShooterGame.player.height/2);
+                            if (spaceShooterGame.lives <= 0) {
+                                spaceShooterGameOver();
+                                return false;
+                            }
+                        }
+                        return false;
+                    }
+                    
+                    return bullet.y < spaceShooterGame.canvas.height;
+                });
+                
+                // 更新Boss
+                if (spaceShooterGame.boss) {
+                    updateBoss();
+                }
+                
                 // 更新敌人
                 spaceShooterGame.enemies = spaceShooterGame.enemies.filter(enemy => {
+                    // 根据敌人类型移动
+                    if (enemy.type === 'zigzag') {
+                        enemy.x += Math.sin(enemy.y / 30) * 3;
+                    } else if (enemy.type === 'fast') {
+                        enemy.y += enemy.speed * 1.5;
+                    } else if (enemy.type === 'shooter') {
+                        enemy.shootTimer = (enemy.shootTimer || 0) + 1;
+                        if (enemy.shootTimer > 80) {
+                            enemy.shootTimer = 0;
+                            spaceShooterGame.enemyBullets.push({
+                                x: enemy.x + enemy.width/2 - 3,
+                                y: enemy.y + enemy.height,
+                                width: 6,
+                                height: 12,
+                                speed: 4
+                            });
+                        }
+                    }
                     enemy.y += enemy.speed;
                     
                     // 检查与子弹碰撞
@@ -7270,28 +7674,57 @@
                         if (bullet.x < enemy.x + enemy.width && bullet.x + bullet.width > enemy.x &&
                             bullet.y < enemy.y + enemy.height && bullet.y + bullet.height > enemy.y) {
                             spaceShooterGame.bullets.splice(i, 1);
-                            spaceShooterGame.score += 10;
-                            spaceShooterGame.kills++;
-                            createSpaceShooterParticles(enemy.x + enemy.width/2, enemy.y + enemy.height/2);
-                            return false;
+                            enemy.hp -= spaceShooterGame.player.bulletDamage;
+                            
+                            if (enemy.hp <= 0) {
+                                spaceShooterGame.score += enemy.points || 10;
+                                spaceShooterGame.kills++;
+                                createSpaceShooterParticles(enemy.x + enemy.width/2, enemy.y + enemy.height/2);
+                                
+                                // 随机掉落道具
+                                if (Math.random() < 0.15) {
+                                    spawnSpaceShooterPowerUp(enemy.x + enemy.width/2, enemy.y + enemy.height/2);
+                                }
+                                return false;
+                            }
+                            break;
                         }
                     }
                     
                     // 检查与玩家碰撞
-                    if (enemy.x < spaceShooterGame.player.x + spaceShooterGame.player.width &&
+                    if (!spaceShooterGame.shieldActive &&
+                        enemy.x < spaceShooterGame.player.x + spaceShooterGame.player.width &&
                         enemy.x + enemy.width > spaceShooterGame.player.x &&
                         enemy.y < spaceShooterGame.player.y + spaceShooterGame.player.height &&
                         enemy.y + enemy.height > spaceShooterGame.player.y) {
-                        spaceShooterGame.lives--;
-                        createSpaceShooterParticles(spaceShooterGame.player.x + spaceShooterGame.player.width/2, spaceShooterGame.player.y + spaceShooterGame.player.height/2);
-                        if (spaceShooterGame.lives <= 0) {
-                            spaceShooterGameOver();
-                            return false;
+                        if (spaceShooterGame.lives > 0) {
+                            spaceShooterGame.lives--;
+                            createSpaceShooterParticles(spaceShooterGame.player.x + spaceShooterGame.player.width/2, spaceShooterGame.player.y + spaceShooterGame.player.height/2);
+                            if (spaceShooterGame.lives <= 0) {
+                                spaceShooterGameOver();
+                                return false;
+                            }
                         }
                         return false;
                     }
                     
                     return enemy.y < spaceShooterGame.canvas.height;
+                });
+                
+                // 更新道具
+                spaceShooterGame.powerUps = spaceShooterGame.powerUps.filter(powerUp => {
+                    powerUp.y += 2;
+                    
+                    // 检查与玩家碰撞
+                    if (powerUp.x < spaceShooterGame.player.x + spaceShooterGame.player.width &&
+                        powerUp.x + powerUp.width > spaceShooterGame.player.x &&
+                        powerUp.y < spaceShooterGame.player.y + spaceShooterGame.player.height &&
+                        powerUp.y + powerUp.height > spaceShooterGame.player.y) {
+                        applySpaceShooterPowerUp(powerUp.type);
+                        return false;
+                    }
+                    
+                    return powerUp.y < spaceShooterGame.canvas.height;
                 });
                 
                 // 更新粒子
@@ -7303,27 +7736,211 @@
                 });
                 
                 // 检查关卡完成
-                if (spaceShooterGame.kills >= spaceShooterGame.targetKills) {
-                    spaceShooterLevelComplete();
-                    return;
+                if (spaceShooterGame.kills >= spaceShooterGame.targetKills && !spaceShooterGame.boss) {
+                    if (spaceShooterGame.level % 5 !== 0 || spaceShooterGame.bossSpawned) {
+                        spaceShooterLevelComplete();
+                        return;
+                    }
                 }
                 
                 drawSpaceShooter();
                 updateSpaceShooterUI();
                 spaceShooterGame.gameLoop = requestAnimationFrame(spaceShooterGameStep);
             }
+            
+            // 生成敌人
+            function spawnEnemy() {
+                const types = ['normal', 'fast', 'zigzag'];
+                if (spaceShooterGame.level >= 3) types.push('shooter');
+                if (spaceShooterGame.level >= 5) types.push('tank');
+                
+                const type = types[Math.floor(Math.random() * types.length)];
+                let enemy = {
+                    x: Math.random() * (spaceShooterGame.canvas.width - 40),
+                    y: -40,
+                    width: 40,
+                    height: 40,
+                    speed: 2 + spaceShooterGame.level * 0.2,
+                    type: type,
+                    hp: 1,
+                    points: 10
+                };
+                
+                if (type === 'fast') {
+                    enemy.width = 30;
+                    enemy.height = 30;
+                    enemy.speed *= 1.5;
+                    enemy.points = 15;
+                } else if (type === 'tank') {
+                    enemy.width = 50;
+                    enemy.height = 50;
+                    enemy.hp = 3 + Math.floor(spaceShooterGame.level / 3);
+                    enemy.speed *= 0.6;
+                    enemy.points = 30;
+                } else if (type === 'shooter') {
+                    enemy.hp = 2;
+                    enemy.points = 25;
+                    enemy.shootTimer = 0;
+                }
+                
+                spaceShooterGame.enemies.push(enemy);
+            }
+            
+            // 生成Boss
+            function spawnBoss() {
+                spaceShooterGame.bossSpawned = true;
+                spaceShooterGame.boss = {
+                    x: spaceShooterGame.canvas.width / 2 - 60,
+                    y: -120,
+                    width: 120,
+                    height: 100,
+                    hp: 50 + spaceShooterGame.level * 10,
+                    maxHp: 50 + spaceShooterGame.level * 10,
+                    speed: 1,
+                    direction: 1,
+                    shootTimer: 0,
+                    pattern: 0
+                };
+            }
+            
+            // 更新Boss
+            function updateBoss() {
+                const boss = spaceShooterGame.boss;
+                
+                // 进场动画
+                if (boss.y < 30) {
+                    boss.y += 1;
+                    return;
+                }
+                
+                // 左右移动
+                boss.x += boss.speed * boss.direction;
+                if (boss.x <= 10 || boss.x >= spaceShooterGame.canvas.width - boss.width - 10) {
+                    boss.direction *= -1;
+                }
+                
+                // 射击
+                boss.shootTimer++;
+                if (boss.shootTimer > 30) {
+                    boss.shootTimer = 0;
+                    boss.pattern = (boss.pattern + 1) % 3;
+                    
+                    if (boss.pattern === 0) {
+                        // 单发
+                        spaceShooterGame.enemyBullets.push({
+                            x: boss.x + boss.width/2 - 4,
+                            y: boss.y + boss.height,
+                            width: 8,
+                            height: 16,
+                            speed: 5
+                        });
+                    } else if (boss.pattern === 1) {
+                        // 三发扇形
+                        for (let i = -1; i <= 1; i++) {
+                            spaceShooterGame.enemyBullets.push({
+                                x: boss.x + boss.width/2 - 4 + i * 20,
+                                y: boss.y + boss.height,
+                                width: 8,
+                                height: 16,
+                                speed: 4,
+                                vx: i * 1.5
+                            });
+                        }
+                    } else {
+                        // 五发散射
+                        for (let i = -2; i <= 2; i++) {
+                            spaceShooterGame.enemyBullets.push({
+                                x: boss.x + boss.width/2 - 4,
+                                y: boss.y + boss.height,
+                                width: 6,
+                                height: 12,
+                                speed: 3,
+                                vx: i * 2
+                            });
+                        }
+                    }
+                }
+                
+                // 更新敌人子弹（有横向移动）
+                spaceShooterGame.enemyBullets.forEach(b => {
+                    if (b.vx) b.x += b.vx;
+                });
+                
+                // 检查与子弹碰撞
+                for (let i = spaceShooterGame.bullets.length - 1; i >= 0; i--) {
+                    const bullet = spaceShooterGame.bullets[i];
+                    if (bullet.x < boss.x + boss.width && bullet.x + bullet.width > boss.x &&
+                        bullet.y < boss.y + boss.height && bullet.y + bullet.height > boss.y) {
+                        spaceShooterGame.bullets.splice(i, 1);
+                        boss.hp -= spaceShooterGame.player.bulletDamage;
+                        
+                        if (boss.hp <= 0) {
+                            spaceShooterGame.score += 500;
+                            createSpaceShooterParticles(boss.x + boss.width/2, boss.y + boss.height/2);
+                            createSpaceShooterParticles(boss.x + 20, boss.y + 20);
+                            createSpaceShooterParticles(boss.x + boss.width - 20, boss.y + 20);
+                            spaceShooterGame.boss = null;
+                            spaceShooterLevelComplete();
+                        }
+                    }
+                }
+            }
+            
+            // 生成道具
+            function spawnSpaceShooterPowerUp(x, y) {
+                const types = ['spread', 'damage', 'speed', 'shield', 'life'];
+                const type = types[Math.floor(Math.random() * types.length)];
+                spaceShooterGame.powerUps.push({
+                    x: x - 12,
+                    y: y,
+                    width: 24,
+                    height: 24,
+                    type: type
+                });
+            }
+            
+            // 应用道具
+            function applySpaceShooterPowerUp(type) {
+                switch(type) {
+                    case 'spread':
+                        spaceShooterGame.player.bulletCount = Math.min(spaceShooterGame.player.bulletCount + 1, 5);
+                        break;
+                    case 'damage':
+                        spaceShooterGame.player.bulletDamage = Math.min(spaceShooterGame.player.bulletDamage + 1, 5);
+                        break;
+                    case 'speed':
+                        spaceShooterGame.player.fireRate = Math.max(spaceShooterGame.player.fireRate - 20, 50);
+                        break;
+                    case 'shield':
+                        spaceShooterGame.shieldActive = true;
+                        spaceShooterGame.shieldTimer = 300; // 5秒护盾
+                        break;
+                    case 'life':
+                        spaceShooterGame.lives++;
+                        break;
+                }
+            }
 
             function spaceShooterShoot() {
                 const now = Date.now();
-                if (now - spaceShooterGame.lastShot < 150) return;
+                if (now - spaceShooterGame.lastShot < spaceShooterGame.player.fireRate) return;
                 spaceShooterGame.lastShot = now;
-                spaceShooterGame.bullets.push({
-                    x: spaceShooterGame.player.x + spaceShooterGame.player.width / 2 - 4,
-                    y: spaceShooterGame.player.y,
-                    width: 8,
-                    height: 12,
-                    speed: 10
-                });
+                
+                const bulletCount = spaceShooterGame.player.bulletCount;
+                const centerX = spaceShooterGame.player.x + spaceShooterGame.player.width / 2;
+                
+                for (let i = 0; i < bulletCount; i++) {
+                    const offset = (i - (bulletCount - 1) / 2) * 12;
+                    const angle = (i - (bulletCount - 1) / 2) * 0.1;
+                    spaceShooterGame.bullets.push({
+                        x: centerX - 4 + offset,
+                        y: spaceShooterGame.player.y,
+                        width: 8,
+                        height: 16,
+                        speed: 12,
+                        vx: Math.sin(angle) * 2
+                    });
+                }
             }
 
             function createSpaceShooterParticles(x, y) {
@@ -7347,6 +7964,17 @@
                 ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--card-bg') || '#1A1D2E';
                 ctx.fillRect(0, 0, spaceShooterGame.canvas.width, spaceShooterGame.canvas.height);
                 
+                // 绘制玩家护盾
+                if (spaceShooterGame.shieldActive) {
+                    ctx.strokeStyle = '#00FFFF';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.arc(spaceShooterGame.player.x + spaceShooterGame.player.width/2, 
+                            spaceShooterGame.player.y + spaceShooterGame.player.height/2, 
+                            35, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+                
                 // 绘制玩家
                 ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary') || '#FFC107';
                 ctx.fillRect(spaceShooterGame.player.x, spaceShooterGame.player.y, spaceShooterGame.player.width, spaceShooterGame.player.height);
@@ -7356,16 +7984,82 @@
                 // 绘制子弹
                 ctx.fillStyle = '#00E676';
                 spaceShooterGame.bullets.forEach(bullet => {
+                    if (bullet.vx) bullet.x += bullet.vx * 0.5;
                     ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
                 });
                 
-                // 绘制敌人
-                ctx.fillStyle = '#FF6B6B';
+                // 绘制敌人子弹
+                ctx.fillStyle = '#FF00FF';
+                spaceShooterGame.enemyBullets.forEach(bullet => {
+                    ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+                });
+                
+                // 绘制敌人（根据类型不同颜色）
                 spaceShooterGame.enemies.forEach(enemy => {
+                    if (enemy.type === 'fast') {
+                        ctx.fillStyle = '#FFFF00';
+                    } else if (enemy.type === 'tank') {
+                        ctx.fillStyle = '#888888';
+                    } else if (enemy.type === 'shooter') {
+                        ctx.fillStyle = '#FF00FF';
+                    } else if (enemy.type === 'zigzag') {
+                        ctx.fillStyle = '#00FFFF';
+                    } else {
+                        ctx.fillStyle = '#FF6B6B';
+                    }
                     ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+                    
+                    // 坦克敌人显示血量
+                    if (enemy.type === 'tank' && enemy.hp > 1) {
+                        ctx.fillStyle = '#FFFFFF';
+                        ctx.font = 'bold 14px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.fillText(enemy.hp, enemy.x + enemy.width/2, enemy.y + enemy.height/2 + 5);
+                    }
+                    
                     ctx.fillStyle = '#FF0000';
-                    ctx.fillRect(enemy.x + 8, enemy.y + 8, 24, 24);
-                    ctx.fillStyle = '#FF6B6B';
+                    ctx.fillRect(enemy.x + 8, enemy.y + 8, enemy.width - 16, enemy.height - 16);
+                });
+                
+                // 绘制Boss
+                if (spaceShooterGame.boss) {
+                    const boss = spaceShooterGame.boss;
+                    // Boss身体
+                    ctx.fillStyle = '#8B0000';
+                    ctx.fillRect(boss.x, boss.y, boss.width, boss.height);
+                    ctx.fillStyle = '#FF4500';
+                    ctx.fillRect(boss.x + 10, boss.y + 10, boss.width - 20, boss.height - 20);
+                    
+                    // Boss血条
+                    ctx.fillStyle = '#333';
+                    ctx.fillRect(boss.x, boss.y - 15, boss.width, 10);
+                    ctx.fillStyle = '#FF0000';
+                    ctx.fillRect(boss.x, boss.y - 15, boss.width * (boss.hp / boss.maxHp), 10);
+                    
+                    // Boss标签
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.font = 'bold 12px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('BOSS', boss.x + boss.width/2, boss.y - 20);
+                }
+                
+                // 绘制道具
+                spaceShooterGame.powerUps.forEach(powerUp => {
+                    ctx.fillStyle = powerUp.type === 'spread' ? '#00FF00' :
+                                    powerUp.type === 'damage' ? '#FF0000' :
+                                    powerUp.type === 'speed' ? '#FFFF00' :
+                                    powerUp.type === 'shield' ? '#00FFFF' : '#FFD700';
+                    ctx.beginPath();
+                    ctx.arc(powerUp.x + powerUp.width/2, powerUp.y + powerUp.height/2, 12, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.fillStyle = '#000';
+                    ctx.font = 'bold 10px Arial';
+                    ctx.textAlign = 'center';
+                    const label = powerUp.type === 'spread' ? 'S' :
+                                  powerUp.type === 'damage' ? 'D' :
+                                  powerUp.type === 'speed' ? 'F' :
+                                  powerUp.type === 'shield' ? '盾' : '+1';
+                    ctx.fillText(label, powerUp.x + powerUp.width/2, powerUp.y + powerUp.height/2 + 4);
                 });
                 
                 // 绘制粒子
@@ -7373,6 +8067,12 @@
                     ctx.fillStyle = `rgba(255, ${255 - p.life * 8}, 0, ${p.life / 25})`;
                     ctx.fillRect(p.x - p.size/2, p.y - p.size/2, p.size, p.size);
                 });
+                
+                // 显示武器等级
+                ctx.fillStyle = '#BFFF00';
+                ctx.font = 'bold 12px Arial';
+                ctx.textAlign = 'left';
+                ctx.fillText(`武器: Lv${spaceShooterGame.player.bulletCount} 伤害: ${spaceShooterGame.player.bulletDamage}`, 10, spaceShooterGame.canvas.height - 10);
             }
 
             function updateSpaceShooterUI() {
@@ -7381,33 +8081,47 @@
                 const livesEl = document.getElementById('space-shooter-lives');
                 const targetEl = document.getElementById('space-shooter-target');
                 if (levelEl) levelEl.textContent = spaceShooterGame.level;
-                if (scoreEl) scoreEl.textContent = spaceShooterGame.score;
-                if (livesEl) livesEl.textContent = spaceShooterGame.lives;
-                if (targetEl) targetEl.textContent = spaceShooterGame.targetKills;
+                if (scoreEl) scoreEl.textContent = Math.floor(spaceShooterGame.score);
+                if (livesEl) livesEl.textContent = Math.max(0, spaceShooterGame.lives);
+                if (targetEl) {
+                    if (spaceShooterGame.boss) {
+                        targetEl.textContent = 'BOSS战!';
+                    } else {
+                        targetEl.textContent = `${spaceShooterGame.kills}/${spaceShooterGame.targetKills}`;
+                    }
+                }
             }
 
             function spaceShooterLevelComplete() {
                 cancelAnimationFrame(spaceShooterGame.gameLoop);
                 
                 let reward = 10;
+                // 扩展到25关
                 if (spaceShooterGame.level <= 3) {
                     reward = 10 + (spaceShooterGame.level - 1) * 10;
                 } else if (spaceShooterGame.level <= 6) {
-                    reward = 50 + (spaceShooterGame.level - 4) * 10;
-                } else if (spaceShooterGame.level <= 9) {
-                    reward = 100 + (spaceShooterGame.level - 7) * 20;
-                } else if (spaceShooterGame.level <= 12) {
-                    reward = 200 + (spaceShooterGame.level - 10) * 30;
+                    reward = 50 + (spaceShooterGame.level - 4) * 15;
+                } else if (spaceShooterGame.level <= 10) {
+                    reward = 100 + (spaceShooterGame.level - 7) * 25;
+                } else if (spaceShooterGame.level <= 15) {
+                    reward = 200 + (spaceShooterGame.level - 11) * 40;
+                } else if (spaceShooterGame.level <= 20) {
+                    reward = 400 + (spaceShooterGame.level - 16) * 50;
                 } else {
-                    reward = 290 + (spaceShooterGame.level - 13) * 20;
+                    reward = 650 + (spaceShooterGame.level - 21) * 70;
                 }
                 
-                // 通过第15关获得500积分
-                if (spaceShooterGame.level === 15) {
-                    reward = 500;
+                // Boss关卡额外奖励
+                if (spaceShooterGame.level % 5 === 0) {
+                    reward += 200;
+                }
+                
+                // 通过第25关获得1000积分
+                if (spaceShooterGame.level === 25) {
+                    reward = 1000;
                     S.pts += reward;
                     upd();
-                    msg(`恭喜通关！完成所有15关！获得${reward}积分！`);
+                    msg(`恭喜通关！完成所有25关！获得${reward}积分！`);
                     // 重置关卡以便重新开始
                     spaceShooterGame.level = 0;
                     spaceShooterGame.score = 0;
@@ -7419,11 +8133,13 @@
                 
                 S.pts += reward;
                 upd();
-                msg(`恭喜通过第${spaceShooterGame.level}关！获得${reward}积分！`);
+                const bossMsg = spaceShooterGame.level % 5 === 0 ? ' (Boss击败奖励!)' : '';
+                msg(`恭喜通过第${spaceShooterGame.level}关！获得${reward}积分！${bossMsg}`);
                 
                 // 递增关卡
                 spaceShooterGame.level++;
-                spaceShooterGame.targetKills = 30 + (spaceShooterGame.level - 1) * 10;
+                spaceShooterGame.bossSpawned = false;
+                spaceShooterGame.targetKills = 20 + (spaceShooterGame.level - 1) * 8;
                 spaceShooterGame.kills = 0;
                 
                 setTimeout(() => {
@@ -7433,7 +8149,26 @@
 
             function spaceShooterGameOver() {
                 cancelAnimationFrame(spaceShooterGame.gameLoop);
-                msg('游戏结束！');
+                spaceShooterGame.lives = 0; // 确保不会出现负数
+                updateSpaceShooterUI();
+                
+                // 显示游戏结束对话框
+                const finalScore = Math.floor(spaceShooterGame.score);
+                const finalLevel = spaceShooterGame.level;
+                
+                if (confirm(`游戏结束！\n\n最终关卡: 第${finalLevel}关\n最终得分: ${finalScore}\n\n是否重新开始？`)) {
+                    // 重新开始
+                    spaceShooterGame.level = 1;
+                    spaceShooterGame.score = 0;
+                    spaceShooterGame.lives = 3;
+                    spaceShooterGame.bossSpawned = false;
+                    spaceShooterRestart();
+                } else {
+                    // 结束游戏，关闭窗口
+                    spaceShooterGame.level = 0;
+                    spaceShooterGame.score = 0;
+                    closeSpaceShooterGame();
+                }
             }
 
             // ========== 消消乐游戏 (Match-3) ==========
